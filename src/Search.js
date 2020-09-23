@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function Search() {
 
@@ -23,7 +23,8 @@ export default function Search() {
   return (
     <form className="form" onSubmit={searchMovies}>
       <label htmlFor="query" className="Label">Movie Name</label>
-      <input className="input" type="text" name="query" placeholder="ie. Jurassic Park" />
+      <input className="input" type="text" name="query" placeholder="ie. Jurassic Park" 
+      value={query} onChange={(e) => setQuery(e.target.value)} />
       <button className="button" type="submit">Submit</button>
     </form>
   )
