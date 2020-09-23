@@ -17,6 +17,7 @@ export default function Search() {
 
       const res = await fetch(url);
       const data = await res.json()
+      console.log(data.results)
       setMovie(data.results)
 
     }catch(err){ 
@@ -40,10 +41,16 @@ export default function Search() {
         <button className="button" type="submit">Submit</button>
       </form>
       <div className="card-list">
-        {movie.filter(movies => {movies.poster_path}).map(movies => (
+        {movie.filter(movies => movies.poster_path).map(movies => (
           <div className="card" key={movies.id}>
             <img className="card--image" src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movies.poster_path}`}
             alt={movies.title + ' poster'} />
+      <div className="card--content">
+      <h3 className="card--title">{movies.title}</h3>
+      <p><small>Release Date: {movies.release_date}</small></p>
+      <p><small>Rating: {movies.vote_average}</small></p>
+      <p className="card--desc"> {movies.overview}</p>
+      </div>
         </div>
         ))}
       </div>
